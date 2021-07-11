@@ -1,8 +1,7 @@
 import React from "react";
-import Container from "../components/Container";
 
 function latestPosts() {
-  return <>latest</>;
+  return <p>latest</p>;
 }
 
 export default latestPosts;

@@ -1,7 +1,7 @@
 import React from "react";
 
-function BlogLayout() {
+function PostLayout() {
   return <div></div>;
 }
 
-export default BlogLayout;
+export default PostLayout;

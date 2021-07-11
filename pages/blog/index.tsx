@@ -1,14 +1,7 @@
 import React, { useState, Fragment } from "react";
 import Head from "next/head";
 
-import {
-  Heading,
-  Flex,
-  Stack,
-  Input,
-  InputGroup,
-  InputRightElement,
-} from "@chakra-ui/react";
+import { Heading, Flex, Stack } from "@chakra-ui/react";
 
 export default function Blog() {
   return (

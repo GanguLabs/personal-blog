@@ -1,12 +1,11 @@
-import React from "react";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import { Flex, useColorMode, Button } from "@chakra-ui/react";
-import WithSubnavigation from "../components/Header";
-import Container from "../components/Container";
+import { useColorMode } from "@chakra-ui/react";
 
-export default function Home() {
-  const { toggleColorMode } = useColorMode();
-  return <>Something</>;
-}
+import { Hero } from "../components/Hero";
+import { Container } from "../components/Container";
+import { Main } from "../components/Main";
+
+const Index = () => {
+  return <Hero />;
+};
+
+export default Index;

@@ -1,12 +1,11 @@
-import React from "react";
-// pages/_document.js
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
-import { ColorModeScript } from "@chakra-ui/color-mode";
+import { ColorModeScript } from "@chakra-ui/react";
+import theme from "styles/theme";
 
 export default class Document extends NextDocument {
   render() {
     return (
-      <Html lang="en">
+      <Html>
         <Head>
           <link
             href="https://fonts.googleapis.com/css2?family=Inter"
@@ -14,7 +13,7 @@ export default class Document extends NextDocument {
           />
         </Head>
         <body>
-          <ColorModeScript />
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />
         </body>

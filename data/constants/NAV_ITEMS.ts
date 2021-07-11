@@ -16,17 +16,22 @@ export const NAV_ITEMS: Array<INavItem> = [
   },
   {
     label: "Laboratory",
-    href: "/laboratory",
+    href: "/labs",
     children: [
       {
-        label: "Simulations",
-        subLabel: "Find your dream design job",
-        href: "/laboratory/simulations",
+        label: "Simulation and Generation",
+        subLabel: "Creative Coding",
+        href: "/labs/simulations",
       },
       {
         label: "Algorithms & Data Structures",
-        subLabel: "Visual Learning",
-        href: "/laboratory/algorithms-and-data-structures",
+        subLabel: "Visual Learning of CS Topics",
+        href: "/labs/algorithms-and-data-structures",
+      },
+      {
+        label: "Playground",
+        subLabel: "Exploring different libraries and concepts",
+        href: "/labs/playground",
       },
     ],
   },
