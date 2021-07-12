@@ -11,10 +11,6 @@ export const NAV_ITEMS: Array<INavItem> = [
     href: "/blog",
   },
   {
-    label: "Latest Posts",
-    href: "/latest-posts",
-  },
-  {
     label: "Laboratory",
     href: "/labs",
     children: [

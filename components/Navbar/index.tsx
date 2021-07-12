@@ -3,6 +3,8 @@ import Link from "next/link";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { NAV_ITEMS } from "../../data/constants/NAV_ITEMS";
 import { DarkModeSwitch } from "components/DarkModeSwitch";
+import { Flex } from "@chakra-ui/layout";
+import Logo from "../Logo";
 
 import {
   MobileIcon,
@@ -19,11 +21,10 @@ const Navbar = () => {
       <Nav>
         <NavbarContainer>
           <Link href="/">
-            <NavLogo>chrislicodes.</NavLogo>
+            <NavLogo>
+              <Logo />
+            </NavLogo>
           </Link>
-          <MobileIcon>
-            <HamburgerIcon w={6} h={6} />
-          </MobileIcon>
           <NavMenu>
             {NAV_ITEMS.map((item) => (
               <NavItem key={item.label}>
@@ -31,7 +32,12 @@ const Navbar = () => {
               </NavItem>
             ))}
           </NavMenu>
-          <DarkModeSwitch />
+          <Flex alignItems="center" gridGap={4}>
+            <DarkModeSwitch />
+            <MobileIcon>
+              <HamburgerIcon w={6} h={6} />
+            </MobileIcon>
+          </Flex>
         </NavbarContainer>
       </Nav>
     </>

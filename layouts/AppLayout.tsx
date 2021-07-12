@@ -2,43 +2,49 @@ import React from "react";
 import {
   Flex,
   Container as ChakraContainer,
-  useColorMode,
   Text,
+  FlexProps,
 } from "@chakra-ui/react";
-
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
-
 import { Footer } from "../components/Footer";
+import { useRouter } from "next/router";
 
 interface ContainerProps {
   children?: React.ReactNode;
 }
 
+const MotionFlex = motion<FlexProps>(Flex);
+
 function Container({ children }: ContainerProps) {
-  const { colorMode } = useColorMode();
-
-  const bgColor = { light: "gray.50", dark: "gray.900" };
-  const color = { light: "black", dark: "white" };
-
+  const router = useRouter();
   return (
-    <ChakraContainer
-      maxW="container.xl"
-      minH="100vh"
-      h="100vh"
-      //   bg={bgColor[colorMode]}
-      //   color={color[colorMode]}
-    >
+    <ChakraContainer maxW="container.xl" minH="100vh" h="100vh">
       <Flex as="div" flexDir="column" minHeight="100%">
         <Navbar />
-        <Flex
+        <MotionFlex
           as="main"
           flexGrow={1}
           flexDir="column"
-          //   bg={bgColor[colorMode]}
-          //   color={color[colorMode]}
+          key={router.route}
+          // initial="initial"
+          // animate="animate"
+          // exit="exit"
+          // transitionDuration="1s"
+          // variants={{
+          //   initial: {
+          //     opacity: 0,
+          //   },
+          //   animate: {
+          //     opacity: 1,
+          //   },
+          //   exit: {
+          //     opacity: 0,
+          //   },
+          // }}
         >
           {children}
-        </Flex>
+        </MotionFlex>
         <Footer>
           <Text>Made with ❤️ by Christoph Lindstädt.</Text>
         </Footer>

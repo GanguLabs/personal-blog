@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import theme from "styles/theme";
 
 export const Nav = styled.nav`
   height: 80px;
@@ -26,24 +25,19 @@ export const NavbarContainer = styled.div`
 `;
 
 export const NavLogo = styled.a`
+  height: 100%;
   justify-self: flex-start;
   cursor: pointer;
-  font-size: 1rem;
   display: flex;
   align-items: center;
-  font-weight: bold;
-  text-decoration: none;
+  margin-top: 15px;
 `;
 
 export const MobileIcon = styled.div`
   display: none;
 
-  @media screen and (max-width: 786px) {
+  @media screen and (max-width: 768px) {
     display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 100%);
     cursor: pointer;
   }
 `;

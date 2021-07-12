@@ -1,4 +1,5 @@
 import { Flex, FlexProps } from "@chakra-ui/react";
+import theme from "styles/theme";
 
 export const Footer = (props: FlexProps) => (
   <Flex
@@ -6,6 +7,7 @@ export const Footer = (props: FlexProps) => (
     height="50px"
     alignItems="center"
     justifyContent="center"
+    color={theme.colors.gray[400]}
     {...props}
   />
 );
