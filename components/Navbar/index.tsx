@@ -1,10 +1,11 @@
-import React from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { NAV_ITEMS } from "../../data/constants/NAV_ITEMS";
 import { DarkModeSwitch } from "components/DarkModeSwitch";
 import { Flex } from "@chakra-ui/layout";
 import Logo from "../Logo";
+import Sidebar from "../SideBar";
 
 import {
   MobileIcon,
@@ -16,6 +17,7 @@ import {
 } from "./NavbarElements";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <Nav>
@@ -35,7 +37,8 @@ const Navbar = () => {
           <Flex alignItems="center" gridGap={4}>
             <DarkModeSwitch />
             <MobileIcon>
-              <HamburgerIcon w={6} h={6} />
+              <HamburgerIcon w={6} h={6} onClick={() => setIsOpen(true)} />
+              <Sidebar isOpen={isOpen} clickHandler={() => setIsOpen(false)} />
             </MobileIcon>
           </Flex>
         </NavbarContainer>

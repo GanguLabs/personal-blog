@@ -17,12 +17,12 @@ export const Hero = ({ title }: { title: string }) => {
         mr={20}
         mb={12}
       >
-        <Flex flexDirection="column" gridGap="15px" ml={1} letterSpacing={0.5}>
+        <Flex flexDirection="column" gridGap="15px" ml={1} letterSpacing={0.4}>
           <Text
             fontSize={["4.5vw", "3.5vw", "30px"]}
             maxWidth="75ch"
             color={color[colorMode]}
-            fontWeight={600}
+            fontWeight={500}
             textTransform="uppercase"
           >
             Hi! This is a
@@ -43,7 +43,7 @@ export const Hero = ({ title }: { title: string }) => {
             fontSize={["5vw", "4vw", "30px"]}
             maxWidth="75ch"
             color={color[colorMode]}
-            fontWeight={400}
+            fontWeight={500}
             mb={7}
           >
             Visual Exploration of Programming Concepts
