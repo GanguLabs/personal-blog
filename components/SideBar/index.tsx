@@ -7,7 +7,7 @@ import {
   SidebarMenu,
   NavItem,
 } from "./SidebarElements";
-import { NAV_ITEMS } from "data/constants/NAV_ITEMS";
+import { NAV_ITEMS } from "constants/NAV_ITEMS";
 import Link from "next/link";
 
 const SideBar = ({

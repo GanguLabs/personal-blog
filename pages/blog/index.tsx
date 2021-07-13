@@ -1,9 +1,21 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import Head from "next/head";
+import matter from "gray-matter";
+import Link from "next/link";
+import path from "path";
+import fs from "fs";
+import { postFilePaths, POSTS_PATH } from "lib/mdxUtils";
 
-import { Heading, Flex, Stack } from "@chakra-ui/react";
+import {
+  Heading,
+  Flex,
+  Stack,
+  UnorderedList,
+  ListItem,
+  Link as ChakraLink,
+} from "@chakra-ui/react";
 
-export default function Blog() {
+export default function Blog({ posts }) {
   return (
     <Fragment>
       <Head>
@@ -27,19 +39,43 @@ export default function Blog() {
           <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
             Blog
           </Heading>
+          <UnorderedList>
+            {posts.map((post) => {
+              return (
+                <ListItem key={post.filePath}>
+                  <Link
+                    as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`}
+                    href={`/blog/[slug]`}
+                  >
+                    <ChakraLink>
+                      {post.data.title} - {post.data.description}
+                    </ChakraLink>
+                  </Link>
+                </ListItem>
+              );
+            })}
+          </UnorderedList>
         </Flex>
       </Stack>
     </Fragment>
   );
 }
 
-// export async function getStaticProps() {
-//   //todo fetch blog posts
-//   const posts = [];
+export async function getStaticProps() {
+  const posts = postFilePaths.map((filePath) => {
+    const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
+    const { content, data } = matter(source);
 
-//   return {
-//     props: {
-//       posts,
-//     },
-//   };
-// }
+    return {
+      content,
+      data,
+      filePath,
+    };
+  });
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
