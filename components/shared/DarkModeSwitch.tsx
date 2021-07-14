@@ -2,8 +2,8 @@ import React from "react";
 import { useColorMode, IconButton } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 
-import lightModeSound from "../assets/sounds/light-mode.mp3";
-import darkModeSound from "../assets/sounds/light-mode.mp3";
+import lightModeSound from "../../assets/sounds/light-mode.mp3";
+import darkModeSound from "../../assets/sounds/light-mode.mp3";
 
 import useSound from "use-sound";
 

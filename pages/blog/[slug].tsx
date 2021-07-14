@@ -13,7 +13,9 @@ import dynamic from "next/dynamic";
 //custom components
 const components = {
   DarkModeSwitch: dynamic<ReactNode>(() =>
-    import("../../components/DarkModeSwitch").then((mod) => mod.DarkModeSwitch)
+    import("../../components/shared/DarkModeSwitch").then(
+      (mod) => mod.DarkModeSwitch
+    )
   ),
 };
 

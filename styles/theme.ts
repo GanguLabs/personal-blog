@@ -29,6 +29,10 @@ const styles = {
         backgroundColor: mode("white", "gray.900")(props),
         lineHeight: "base",
       },
+      canvas: {
+        width: "100%",
+        height: "100%",
+      },
     };
   },
 };
