@@ -1,9 +1,22 @@
 import { Flex, Heading, Text, useColorMode } from "@chakra-ui/react";
 import theme from "styles/theme";
 import CTAButton from "./CTAButton";
+import { keyframes } from "@emotion/react";
+
+const gradientAnimation = keyframes`
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+`;
 
 export const Hero = ({ title }: { title: string }) => {
-  const gradient = `linear(to-l, ${theme.overrides.colors.gradient["100"]}, ${theme.overrides.colors.gradient["200"]})`;
+  const gradient = `linear(to-l, ${theme.overrides.colors.gradient["100"]}, ${theme.overrides.colors.gradient["200"]},)`;
 
   const { colorMode } = useColorMode();
   const color = { light: "gray.700", dark: "gray.400" };
@@ -31,11 +44,13 @@ export const Hero = ({ title }: { title: string }) => {
             fontSize={["13vw", "11vw", "70px"]}
             bgGradient={gradient}
             bgClip="text"
+            backgroundSize="200% 200%"
             letterSpacing={1.5}
             mb={2}
             ml={0}
             textTransform="uppercase"
             lineHeight={1}
+            animation={`${gradientAnimation} 7s infinite;`}
           >
             {title}
           </Heading>
