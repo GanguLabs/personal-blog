@@ -20,13 +20,13 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
-    "plugin:prettier/recommended",
+    // "plugin:prettier/recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
   ],
   ignorePatterns: ["dist/*.*"],
   rules: {
-    "prettier/prettier": ["error", { endOfLine: "off" }],
+    // "prettier/prettier": ["error", { endOfLine: "off" }],
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { extensions: [".ts", ".tsx"] }],
   },
