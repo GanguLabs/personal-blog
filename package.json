@@ -1,5 +1,5 @@
 {
-  "name": "with-chakra-ui-typescript",
+  "name": "chrislicodes-blog",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
@@ -22,9 +22,8 @@
     "framer-motion": "^4.0.3",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
-    "mdx-bundler": "^5.1.0",
+    "mdx-bundler": "^5.2.1",
     "next": "latest",
-    "next-mdx-remote": "^3.0.2",
     "next-seo": "^4.26.0",
     "path": "^0.12.7",
     "react": "^17.0.2",

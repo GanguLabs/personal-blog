@@ -1,68 +1,49 @@
-import { POSTS_PATH, postFilePaths } from "lib/mdxUtils";
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
-import { Flex, Heading, Text, Divider } from "@chakra-ui/layout";
-import { ReactNode, Fragment } from "react";
-import dynamic from "next/dynamic";
+import React from "react";
+import Link from "next/link";
+import { getMDXComponent } from "mdx-bundler/client";
+import { getAllPosts, getSinglePost, prepareMDX } from "../../lib/mdxUtils";
 
-// TODO: Replace next-mdx-remote with mdx-bundler
-
-//custom components
-const components = {
-  DarkModeSwitch: dynamic<ReactNode>(() =>
-    import("../../components/shared/DarkModeSwitch").then(
-      (mod) => mod.DarkModeSwitch
-    )
-  ),
+const CustomLink: React.FC<{ as: string; href: string }> = ({
+  as,
+  href,
+  ...otherProps
+}) => {
+  return (
+    <Link as={as} href={href}>
+      <a {...otherProps} className="custom-link" />
+    </Link>
+  );
 };
 
-export default function Blog({ source, frontMatter }) {
+const Post = ({ code, frontmatter }) => {
+  const Component = React.useMemo(() => getMDXComponent(code), [code]);
+
   return (
-    <Fragment>
-      <Flex flexDirection="column">
-        <Heading as="h1">{frontMatter.title}</Heading>
-        <Text>{frontMatter.description}</Text>
-      </Flex>
-      <Divider />
-      <Flex as="main" flexDirection="column">
-        <MDXRemote {...source} components={components} />
-      </Flex>
-    </Fragment>
+    <div className="wrapper">
+      <h1>{frontmatter.title}</h1>
+      <Component
+        components={{
+          a: CustomLink,
+        }}
+      />
+    </div>
   );
-}
+};
 
 export const getStaticProps = async ({ params }) => {
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
-  const source = fs.readFileSync(postFilePath);
-
-  const { content, data } = matter(source);
-
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
-    },
-    scope: data,
-  });
-
+  // const post = await getSinglePost(params.slug);
+  const post = await prepareMDX(params.slug, {});
   return {
-    props: {
-      source: mdxSource,
-      frontMatter: data,
-    },
+    props: { ...post },
   };
 };
 
 export const getStaticPaths = async () => {
-  const paths = postFilePaths
-    .map((path) => path.replace(/\.mdx?$/, ""))
-    .map((slug) => ({ params: { slug } }));
-
+  const paths = getAllPosts().map(({ slug }) => ({ params: { slug } }));
   return {
     paths,
     fallback: false,
   };
 };
+
+export default Post;
