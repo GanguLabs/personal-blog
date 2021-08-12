@@ -12,8 +12,6 @@ export default function Box(props) {
 
   const color = props.color || "#720b23";
 
-  console.log(props.color);
-
   return (
     <NativeBox
       args={[1, 1, 1]}

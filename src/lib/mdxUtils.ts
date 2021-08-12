@@ -115,8 +115,7 @@ export const prepareMDX = async (
     },
     esbuildOptions: (options) => {
       options.target = ["es2020"];
-      options.outdir =
-        "C:/Projects/Personal Projects/creative-coding/personal-blog/public/";
+      options.outdir = path.join(process.cwd(), "/public");
       options.loader = {
         ...options.loader,
         ".png": "file",
