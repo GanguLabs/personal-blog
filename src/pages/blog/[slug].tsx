@@ -4,7 +4,7 @@ import { getAllPosts, prepareMDX, getComponents } from "../../lib/mdxUtils";
 import { PostLayout } from "src/layouts/PostLayout";
 
 const Post = ({ code, frontmatter }) => {
-  console.log(code);
+  // console.log(code);
   return (
     <PostLayout>
       <h1>{frontmatter.title}</h1>
@@ -14,9 +14,7 @@ const Post = ({ code, frontmatter }) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const components = await getComponents(
-    "C:/Projects/Personal Projects/creative-coding/personal-blog/src/data/posts"
-  );
+  const components = await getComponents("");
   const post = await prepareMDX(params.slug, { files: components });
   return {
     props: { ...post },

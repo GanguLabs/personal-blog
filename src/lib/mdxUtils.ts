@@ -9,7 +9,7 @@ interface Components {
   [file: string]: string;
 }
 
-export const POSTS_PATH = path.join(process.cwd(), "/src//data/posts");
+export const POSTS_PATH = path.join(process.cwd(), "/src/data/posts");
 
 export const getSourceOfFile = (fileName: string) => {
   return fs.readFileSync(path.join(POSTS_PATH, fileName), "utf-8");
@@ -134,8 +134,10 @@ export const prepareMDX = async (
   return { frontmatter, code };
 };
 
-export const getComponents = async (directory: string) => {
+export const getComponents = async (folder: string) => {
   const components: Components = {};
+
+  const directory = POSTS_PATH + folder;
 
   const files = await readdir(directory);
 
