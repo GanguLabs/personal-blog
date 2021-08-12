@@ -127,7 +127,6 @@ const preToCodeBlock = (
   metaString: string;
   className: string;
 } => {
-  console.log(preProps);
   if (
     // children is code element
     preProps.children &&

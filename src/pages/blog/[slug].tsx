@@ -4,7 +4,6 @@ import { getAllPosts, prepareMDX, getComponents } from "../../lib/mdxUtils";
 import { PostLayout } from "src/layouts/PostLayout";
 
 const Post = ({ code, frontmatter }) => {
-  // console.log(code);
   return (
     <PostLayout>
       <h1>{frontmatter.title}</h1>
