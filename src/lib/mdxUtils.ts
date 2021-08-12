@@ -65,6 +65,9 @@ export const getSinglePost = async (slug: string) => {
       return options;
     },
     cwd: POSTS_PATH,
+    globals: {
+      three: "three",
+    },
   });
 
   return {
@@ -111,9 +114,9 @@ export const prepareMDX = async (
       return options;
     },
     esbuildOptions: (options) => {
-      (options.target = ["es2020"]),
-        (options.outdir =
-          "C:/Projects/Personal Projects/creative-coding/personal-blog/public/");
+      options.target = ["es2020"];
+      options.outdir =
+        "C:/Projects/Personal Projects/creative-coding/personal-blog/public/";
       options.loader = {
         ...options.loader,
         ".png": "file",

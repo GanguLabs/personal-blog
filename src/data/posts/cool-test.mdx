@@ -3,6 +3,7 @@ title: Post with cool component
 ---
 
 import Boxes from "../../pages/labs/playground/box-example";
+import { FullBleed } from "../../layouts/PostLayout.tsx";
 
 This is an my second post.
 
@@ -14,4 +15,6 @@ I'm also using custom Link Component
 
 Go back [home](/).
 
-<Boxes color="#a3f3ff" />
+<FullBleed>
+  <Boxes color="#a3f3ff" />
+</FullBleed>

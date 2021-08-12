@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { getAllPosts, getComponents } from "../../lib/mdxUtils";
 
-export default function BlogList({ posts, components }) {
-  console.log(components);
+export default function BlogList({ posts }) {
+  console.log(posts);
   return (
     <div className="wrapper">
       <h1>All Posts</h1>
@@ -18,7 +18,9 @@ export default function BlogList({ posts, components }) {
 }
 
 export const getStaticProps = async () => {
-  const posts = getAllPosts();
+  const posts = getAllPosts().filter(
+    (post) => post.frontmatter.draft !== "true"
+  );
   const components = await getComponents(
     "C:/Projects/Personal Projects/creative-coding/personal-blog/src/data/posts"
   );

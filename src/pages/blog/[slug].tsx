@@ -1,43 +1,19 @@
 import React from "react";
-import Link from "next/link";
-import { getMDXComponent } from "mdx-bundler/client";
-import {
-  getAllPosts,
-  getSinglePost,
-  prepareMDX,
-  getComponents,
-} from "../../lib/mdxUtils";
-import { GetStaticPropsContext } from "next";
-
-const CustomLink: React.FC<{ as: string; href: string }> = ({
-  as,
-  href,
-  ...otherProps
-}) => {
-  return (
-    <Link as={as} href={href}>
-      <a {...otherProps} className="custom-link" />
-    </Link>
-  );
-};
+import { MDX } from "src/components/mdx";
+import { getAllPosts, prepareMDX, getComponents } from "../../lib/mdxUtils";
+import { PostLayout } from "src/layouts/PostLayout";
 
 const Post = ({ code, frontmatter }) => {
-  const Component = React.useMemo(() => getMDXComponent(code), [code]);
-
+  console.log(code);
   return (
-    <div className="wrapper">
+    <PostLayout>
       <h1>{frontmatter.title}</h1>
-      <Component
-        components={{
-          a: CustomLink,
-        }}
-      />
-    </div>
+      <MDX source={code} />
+    </PostLayout>
   );
 };
 
 export const getStaticProps = async ({ params }) => {
-  // const post = await getSinglePost(params.slug);
   const components = await getComponents(
     "C:/Projects/Personal Projects/creative-coding/personal-blog/src/data/posts"
   );
@@ -46,23 +22,6 @@ export const getStaticProps = async ({ params }) => {
     props: { ...post },
   };
 };
-
-// export const getStaticProps = async ({params}: GetStaticPropsContext) => {
-//   if(params?.slug){
-//     const post = await getPostBySlug([params.year as string, params.month as string, params.slug as string], ['slug', 'title', 'content', 'lead', 'href', 'tags', 'year', 'month', 'day', 'directory'])
-
-//     const components = await getComponents(post.directory)
-
-//     const source = await prepareMDX(post.content, components)
-
-//     return {
-//       props: {
-//         post: pick(post, ['slug', 'title', 'lead', 'href', 'tags', 'year', 'month', 'day']),
-//         source
-//       }
-//     }
-//   }
-// }
 
 export const getStaticPaths = async () => {
   const paths = getAllPosts().map(({ slug }) => ({ params: { slug } }));

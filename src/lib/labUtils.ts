@@ -1,4 +1,3 @@
-import fs from "fs";
 import path, { resolve } from "path";
 import { readdir } from "fs/promises";
 
