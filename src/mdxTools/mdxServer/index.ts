@@ -17,17 +17,17 @@ export const getSourceOfFile = (path: string) => {
 
 //Searches the posts folders for .mdx files and returns the path and the foldername where the .mdx file was found
 const getFilePaths = (
-  path: string,
+  pathName: string,
   extension: string
 ): { filePath: string; folderName: string }[] => {
   const mdxCrawler = new fdir()
     .filter((pathName) => pathName.endsWith(extension))
     .withFullPaths();
 
-  const files = mdxCrawler.crawl(path).sync() as string[];
+  const files = mdxCrawler.crawl(pathName).sync() as string[];
 
   const fileNames = files.map((filePath) => {
-    const fileSplit = filePath.split("\\");
+    const fileSplit = filePath.split(path.sep);
     const fileSplitLength = fileSplit.length;
     return {
       filePath: filePath,
