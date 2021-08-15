@@ -52,6 +52,8 @@ export const getAllPosts = () => {
     };
   });
 
+  console.log(content);
+
   return content;
 };
 
