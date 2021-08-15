@@ -51,7 +51,7 @@ export const getAllPosts = () => {
       slug: slug,
     };
   });
-
+  console.log("FILENAMES:", fileNames);
   console.log(content);
 
   return content;
