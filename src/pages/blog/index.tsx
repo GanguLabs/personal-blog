@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllPosts } from "../../lib/mdxUtils";
+import { getAllPosts } from "../../mdxTools/mdxServer";
 
 export default function BlogList({ posts }) {
   return (

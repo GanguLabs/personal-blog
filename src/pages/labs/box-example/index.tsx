@@ -1,8 +1,12 @@
+import React from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+
 import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Box as NativeBox } from "@react-three/drei";
 
-export default function Box(props) {
+function Box(props) {
   const mesh = useRef(null);
 
   const [hovered, setHover] = useState(false);
@@ -29,3 +33,23 @@ export default function Box(props) {
     </NativeBox>
   );
 }
+
+function AnimationCanvas({ color }) {
+  return (
+    <Canvas camera={{ position: [100, 10, 0], fov: 35 }}>
+      <ambientLight intensity={2} />
+      <pointLight position={[40, 40, 40]} />
+      <Box position={[10, 0, 0]} color={color} />
+      <Box position={[-10, 0, 0]} color={color} />
+      <Box position={[0, 10, 0]} color={color} />
+      <Box position={[0, -10, 0]} color={color} />
+      <OrbitControls />
+    </Canvas>
+  );
+}
+
+const Boxes = ({ color }) => {
+  return <AnimationCanvas color={color} />;
+};
+
+export default Boxes;
