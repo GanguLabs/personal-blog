@@ -1,10 +1,6 @@
-import React from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-
-import { useRef, useState } from "react";
-import { useFrame } from "@react-three/fiber";
-import { Box as NativeBox } from "@react-three/drei";
+import React, { useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Box as NativeBox, OrbitControls } from "@react-three/drei";
 
 function Box(props) {
   const mesh = useRef(null);
@@ -36,7 +32,7 @@ function Box(props) {
 
 function AnimationCanvas({ color }) {
   return (
-    <Canvas camera={{ position: [100, 10, 0], fov: 35 }}>
+    <Canvas camera={{ position: [100, 10, 0], fov: 20 }}>
       <ambientLight intensity={2} />
       <pointLight position={[40, 40, 40]} />
       <Box position={[10, 0, 0]} color={color} />

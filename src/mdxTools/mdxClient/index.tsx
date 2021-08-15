@@ -7,23 +7,23 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import darkTheme from "prism-react-renderer/themes/nightOwl";
 import lightTheme from "prism-react-renderer/themes/nightOwlLight";
 import styled from "@emotion/styled";
-import { useColorMode, Heading } from "@chakra-ui/react";
+import { useColorMode, Heading, Text } from "@chakra-ui/react";
 import { HalfBleed } from "components/layouts/PostLayout";
 
 const Img: React.FC<any> = (props) => {
   return (
-    <div>
-      <Image {...props} width="100%" height="100%" objectFit="none" />
-    </div>
+    <>
+      <Image {...props} width="100%" height="50%" layout="responsive" />
+    </>
   );
 };
 
-const Paragraph: React.FC<any> = (props) => {
-  if (typeof props.children !== "string" && props.children.type === "img") {
+const Paragraph: React.FC = (props) => {
+  if (typeof props.children !== "string") {
     return <>{props.children}</>;
   }
 
-  return <p {...props} />;
+  return <Text {...props} />;
 };
 
 const Anchor: React.FC<Partial<ReactHTMLElement<HTMLAnchorElement>["props"]>> =
@@ -48,6 +48,8 @@ const Pre = styled.pre`
   padding: 0.5em;
   border-radius: 10px;
   margin-top: 40px;
+  overflow: auto;
+  /* font-family: inherit; */
 `;
 
 const Line = styled.div`
@@ -79,7 +81,7 @@ const LanguageFlag = styled.div`
   padding-top: 5px;
   font-size: 19px;
   font-weight: 500;
-  font-family: 'Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"';
+  /* font-family: inherit; */
 `;
 
 interface ICode {
@@ -173,13 +175,16 @@ export const components = {
 
     return <pre {...preProps} />;
   },
-  h1: function Headline() {
-    return <Heading fontWeight="bold" fontSize="3xl" />;
+  h1: function Headline(props) {
+    return <Heading fontWeight="bold" fontSize="3xl" {...props} />;
+  },
+  h2: function Headline(props) {
+    return <Heading fontWeight="bold" fontSize="2xl" {...props} />;
   },
 };
 
 export const MDX: React.FC<{ source: string }> = ({ source }) => {
   const Component = useMemo(() => getMDXComponent(source), [source]);
 
-  return <Component components={components} />;
+  return <Component components={{ ...components }} />;
 };
