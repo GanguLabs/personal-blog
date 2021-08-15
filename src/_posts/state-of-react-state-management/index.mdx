@@ -22,3 +22,35 @@ Commodo ut qui proident anim minim adipisicing irure elit tempor reprehenderit s
 ![alt text](./zustand.jpg "Logo Title Text 1")
 
 <Test />
+
+```ts
+// Observer
+type Listener<EventType> = (ev: EventType) => void;
+function createObserver<EventType>(): {
+  subscribe: (listener: Listener<EventType>) => () => void;
+  publish: (event: EventType) => void;
+} {
+  let listeners: Listener<EventType>[] = [];
+
+  return {
+    subscribe: (listener: Listener<EventType>): (() => void) => {
+      listeners.push(listener);
+      return () => {
+        listeners = listeners.filter((l) => l !== listener);
+      };
+    },
+    publish: (event: EventType) => {
+      listeners.forEach((l) => l(event));
+    },
+  };
+}
+
+interface BeforeSetEvent<T> {
+  value: T;
+  newValue: T;
+}
+
+interface AfterSetEvent<T> {
+  value: T;
+}
+```

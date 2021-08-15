@@ -1,11 +1,7 @@
 import React from "react";
 import { MDX } from "mdxTools/mdxClient";
-import {
-  getAllPosts,
-  prepareMDX,
-  getComponents,
-} from "../../mdxTools/mdxServer";
-import { PostLayout } from "layouts/PostLayout";
+import { getAllPosts, prepareMDX } from "../../mdxTools/mdxServer";
+import { PostLayout } from "components/layouts/PostLayout";
 
 const Post = ({ code, frontmatter }) => {
   return (
@@ -17,8 +13,7 @@ const Post = ({ code, frontmatter }) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const components = await getComponents("");
-  const post = await prepareMDX(params.slug, { files: components });
+  const post = await prepareMDX(params.slug, {});
   return {
     props: { ...post },
   };

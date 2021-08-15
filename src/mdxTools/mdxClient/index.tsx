@@ -8,6 +8,7 @@ import darkTheme from "prism-react-renderer/themes/nightOwl";
 import lightTheme from "prism-react-renderer/themes/nightOwlLight";
 import styled from "@emotion/styled";
 import { useColorMode, Heading } from "@chakra-ui/react";
+import { HalfBleed } from "components/layouts/PostLayout";
 
 const Img: React.FC<any> = (props) => {
   return (
@@ -101,19 +102,21 @@ const WithLineNumbers: React.FC<ICode> = (props) => {
       language="jsx"
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Pre className={className} style={style}>
-          <LanguageFlag>{props.language.toUpperCase()}</LanguageFlag>
-          {tokens.map((line, i) => (
-            <Line key={i} {...getLineProps({ line, key: i })}>
-              <LineNo>{i + 1}</LineNo>
-              <LineContent>
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token, key })} />
-                ))}
-              </LineContent>
-            </Line>
-          ))}
-        </Pre>
+        <HalfBleed>
+          <Pre className={className} style={style}>
+            <LanguageFlag>{props.language.toUpperCase()}</LanguageFlag>
+            {tokens.map((line, i) => (
+              <Line key={i} {...getLineProps({ line, key: i })}>
+                <LineNo>{i + 1}</LineNo>
+                <LineContent>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </LineContent>
+              </Line>
+            ))}
+          </Pre>
+        </HalfBleed>
       )}
     </Highlight>
   );
