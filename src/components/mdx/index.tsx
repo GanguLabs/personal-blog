@@ -12,7 +12,7 @@ import { useColorMode, Heading } from "@chakra-ui/react";
 const Img: React.FC<any> = (props) => {
   return (
     <div>
-      <Image {...props} layout="fill" objectFit="none" />
+      <Image {...props} width="100%" height="100%" objectFit="none" />
     </div>
   );
 };
@@ -156,7 +156,7 @@ const preToCodeBlock = (
 };
 
 export const components = {
-  img: Img,
+  // img: Img,
   p: Paragraph,
   a: Anchor,
   pre: function codeBlock(

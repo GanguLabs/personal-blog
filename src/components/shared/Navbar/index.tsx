@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { NAV_ITEMS } from "../../../constants/NAV_ITEMS";
-import { DarkModeSwitch } from "src/components/shared/DarkModeSwitch";
+import { NAV_ITEMS } from "./NAV_ITEMS";
+import { DarkModeSwitch } from "../DarkModeSwitch";
 import { Flex } from "@chakra-ui/layout";
 import Logo from "../Logo";
 import Sidebar from "../SideBar";

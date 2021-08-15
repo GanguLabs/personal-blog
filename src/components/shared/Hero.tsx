@@ -1,5 +1,5 @@
 import { Flex, Heading, Text, useColorMode } from "@chakra-ui/react";
-import theme from "src/styles/theme";
+import theme from "styles/theme";
 import CTAButton from "./CTAButton";
 import { keyframes } from "@emotion/react";
 

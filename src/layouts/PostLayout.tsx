@@ -9,7 +9,11 @@ const Grid = styled(ChakraGrid)`
 `;
 
 export const FullBleed = ({ children }) => {
-  return <Box gridColumn="1/-1">{children}</Box>;
+  return (
+    <Box gridColumn="1/-1" backgroundColor="red.200">
+      {children}
+    </Box>
+  );
 };
 
 export function PostLayout({ children }) {

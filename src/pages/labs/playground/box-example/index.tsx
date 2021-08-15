@@ -1,6 +1,6 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import Box from "src/components/labs/ripple/Box";
+import Box from "components/labs/ripple/Box";
 import { OrbitControls } from "@react-three/drei";
 
 function AnimationCanvas({ color }) {

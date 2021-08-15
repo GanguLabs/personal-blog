@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { bundleMDX } from "mdx-bundler";
 import { asyncForEach } from "../lib/utils";
 const { readdir, readFile } = fs.promises;
+import { remarkMdxImages } from "remark-mdx-images";
 
 interface Components {
   [file: string]: string;
@@ -53,14 +54,14 @@ export const getSinglePost = async (slug: string) => {
   const { code, frontmatter } = await bundleMDX(source, {
     esbuildOptions(options) {
       options.minify = false;
-      options.target = [
-        "es2020",
-        "chrome58",
-        "firefox57",
-        "safari11",
-        "edge16",
-        "node12",
-      ];
+      // options.target = [
+      //   "es2020",
+      //   "chrome58",
+      //   "firefox57",
+      //   "safari11",
+      //   "edge16",
+      //   "node12",
+      // ];
 
       return options;
     },
@@ -107,15 +108,18 @@ export const prepareMDX = async (
 
   const { code, frontmatter } = await bundleMDX(source, {
     files: options.files,
-    cwd: directory,
+    cwd: path.join(process.cwd(), "/src/data/posts"),
     xdmOptions: (options) => {
-      options.remarkPlugins = [...(options.remarkPlugins ?? [])];
+      options.remarkPlugins = [
+        ...(options.remarkPlugins ?? []),
+        remarkMdxImages,
+      ];
 
       return options;
     },
     esbuildOptions: (options) => {
-      options.target = ["es2020"];
-      options.outdir = path.join(process.cwd(), "/public");
+      // options.target = ["es2020"];
+      options.outdir = path.join(process.cwd(), "/public/img");
       options.loader = {
         ...options.loader,
         ".png": "file",
@@ -123,7 +127,7 @@ export const prepareMDX = async (
         ".gif": "file",
         ".mp3": "file",
       };
-      options.publicPath = imagesUrl;
+      options.publicPath = path.join(process.cwd(), "/public/img");
       options.write = true;
 
       return options;

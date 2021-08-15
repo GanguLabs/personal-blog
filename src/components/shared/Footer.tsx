@@ -1,5 +1,5 @@
 import { Flex, FlexProps } from "@chakra-ui/react";
-import theme from "src/styles/theme";
+import theme from "styles/theme";
 
 export const Footer = (props: FlexProps) => (
   <Flex

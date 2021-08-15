@@ -1,7 +1,7 @@
 import React from "react";
-import { MDX } from "src/components/mdx";
+import { MDX } from "components/mdx";
 import { getAllPosts, prepareMDX, getComponents } from "../../lib/mdxUtils";
-import { PostLayout } from "src/layouts/PostLayout";
+import { PostLayout } from "layouts/PostLayout";
 
 const Post = ({ code, frontmatter }) => {
   return (

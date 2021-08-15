@@ -1,7 +1,7 @@
 import React from "react";
 import { keyframes } from "@emotion/react";
 import { Button, useColorMode } from "@chakra-ui/react";
-import theme from "src/styles/theme";
+import theme from "styles/theme";
 
 import { useRouter } from "next/router";
 
