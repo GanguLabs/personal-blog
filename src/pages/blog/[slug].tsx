@@ -2,11 +2,32 @@ import React from "react";
 import { MDX } from "mdxTools/mdxClient";
 import { getAllPosts, prepareMDX } from "../../mdxTools/mdxServer";
 import { PostLayout } from "components/layouts/PostLayout";
+import { Heading, Text, Box } from "@chakra-ui/layout";
+import Date from "components/shared/Date";
 
-const Post = ({ code, frontmatter }) => {
+interface IPost {
+  frontmatter: {
+    [key: string]: string;
+  };
+  code: string;
+}
+
+const Post: React.FC<IPost> = ({ code, frontmatter }) => {
+  const lastEdited = frontmatter.publishedAt !== frontmatter.lastEditedAt && (
+    <>
+      • Last Edited: <Date date={frontmatter.lastEditedAt} />
+    </>
+  );
+
   return (
     <PostLayout>
-      <h1>{frontmatter.title}</h1>
+      <Box marginTop="20">
+        <Text color="gray.500" fontSize="sm" marginBottom={1}>
+          Published: <Date date={frontmatter.publishedAt} />
+          {lastEdited}
+        </Text>
+        <Heading as="h1">{frontmatter.title}</Heading>
+      </Box>
       <MDX source={code} />
     </PostLayout>
   );

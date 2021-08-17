@@ -6,7 +6,7 @@ import {
   FlexProps,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import Navbar from "../shared/Navbar";
+import Navbar from "../shared/Navigation/Navbar";
 import { Footer } from "../shared/Footer";
 import { useRouter } from "next/router";
 
@@ -19,7 +19,12 @@ const MotionFlex = motion<FlexProps>(Flex);
 function Container({ children }: ContainerProps) {
   const router = useRouter();
   return (
-    <ChakraContainer maxW="container.xl" minH="100vh" h="100vh">
+    <ChakraContainer
+      maxW="container.xl"
+      minH="100vh"
+      h="100vh"
+      padding="0 25px"
+    >
       <Flex as="div" flexDir="column" minHeight="100%">
         <Navbar />
         <MotionFlex
@@ -27,21 +32,22 @@ function Container({ children }: ContainerProps) {
           flexGrow={1}
           flexDir="column"
           key={router.route}
-          // initial="initial"
-          // animate="animate"
-          // exit="exit"
-          // transitionDuration="1s"
-          // variants={{
-          //   initial: {
-          //     opacity: 0,
-          //   },
-          //   animate: {
-          //     opacity: 1,
-          //   },
-          //   exit: {
-          //     opacity: 0,
-          //   },
-          // }}
+          alignItems="center"
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transitionDuration="10ms"
+          variants={{
+            initial: {
+              opacity: 0,
+            },
+            animate: {
+              opacity: 1,
+            },
+            exit: {
+              opacity: 0,
+            },
+          }}
         >
           {children}
         </MotionFlex>

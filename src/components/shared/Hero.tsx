@@ -27,18 +27,18 @@ export const Hero = ({ title }: { title: string }) => {
         justifyContent="center"
         alignItems="center"
         flexGrow={1}
+        mt={16}
         mr={20}
         mb={12}
       >
         <Flex flexDirection="column" gridGap="15px" ml={1} letterSpacing={0.4}>
           <Text
-            fontSize={["4.5vw", "3.5vw", "30px"]}
+            fontSize={["5vw", "4vw", "30px"]}
             maxWidth="75ch"
             color={color[colorMode]}
             fontWeight={500}
-            textTransform="uppercase"
           >
-            Hi! This is a
+            Hi! Welcome to my
           </Text>
           <Heading
             fontSize={["13vw", "11vw", "70px"]}

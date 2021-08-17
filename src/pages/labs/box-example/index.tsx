@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Box as NativeBox, OrbitControls } from "@react-three/drei";
 
@@ -31,16 +31,24 @@ function Box(props) {
 }
 
 function AnimationCanvas({ color }) {
+  const [dpr, setDPR] = useState<number | null>(null);
+
+  useEffect(() => {
+    setDPR(Math.max(window.devicePixelRatio, 2));
+  }, []);
+
   return (
-    <Canvas camera={{ position: [100, 10, 0], fov: 20 }}>
-      <ambientLight intensity={2} />
-      <pointLight position={[40, 40, 40]} />
-      <Box position={[10, 0, 0]} color={color} />
-      <Box position={[-10, 0, 0]} color={color} />
-      <Box position={[0, 10, 0]} color={color} />
-      <Box position={[0, -10, 0]} color={color} />
-      <OrbitControls />
-    </Canvas>
+    dpr && (
+      <Canvas camera={{ position: [100, 10, 0], fov: 20 }} dpr={dpr}>
+        <ambientLight intensity={2} />
+        <pointLight position={[40, 40, 40]} />
+        <Box position={[10, 0, 0]} color={color} />
+        <Box position={[-10, 0, 0]} color={color} />
+        <Box position={[0, 10, 0]} color={color} />
+        <Box position={[0, -10, 0]} color={color} />
+        <OrbitControls />
+      </Canvas>
+    )
   );
 }
 

@@ -43,7 +43,8 @@ const CTAButton: React.FC<ButtonProps> = ({ children, href }) => {
       transform="scale(1)"
       animation={`${pulse} 5s 3s infinite;`}
       width={["10rem", "12rem"]}
-      fontSize={[14, 17]}
+      fontSize={[12, 15]}
+      letterSpacing="wider"
       _hover={{
         backgroundColor: `${theme.overrides.colors.gradient["200"]}`,
         color: "black",

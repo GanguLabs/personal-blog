@@ -82,3 +82,26 @@ export const asyncForEach = async <T>(
 
   await Promise.all(promises);
 };
+
+export function parseDate(input, format?) {
+  format = format || "dd.mm.yyyy"; // default format
+  const parts = input.match(/(\d+)/g);
+  let i = 0;
+  const fmt = {};
+  // extract date-part indexes from the format
+  format.replace(/(yyyy|dd|mm)/g, function (part: string) {
+    fmt[part] = i++;
+  });
+
+  return new Date(parts[fmt["yyyy"]], parts[fmt["mm"]] - 1, parts[fmt["dd"]]);
+}
+
+export function getLocaleString(input, format, locale) {
+  const parsedDate = parseDate(input, format);
+
+  return parsedDate.toLocaleString(locale, {
+    day: "numeric",
+    year: "numeric",
+    month: "short",
+  });
+}

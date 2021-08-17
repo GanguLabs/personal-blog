@@ -7,6 +7,10 @@ export interface INavItem {
 
 export const NAV_ITEMS: Array<INavItem> = [
   {
+    label: "Home",
+    href: "/",
+  },
+  {
     label: "Blog",
     href: "/blog",
   },

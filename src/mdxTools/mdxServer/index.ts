@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { bundleMDX } from "mdx-bundler";
-import { asyncForEach } from "../utils";
+import { asyncForEach } from "../../utils";
 const { readFile } = fs.promises;
 import { remarkMdxImages } from "remark-mdx-images";
 import { fdir } from "fdir";
@@ -75,6 +75,17 @@ export const getComponents = async (directoryName: string) => {
 
   return components;
 };
+
+interface IFrontmatter {
+  title: string;
+  publishedAt: string;
+  lastEditedAt: string;
+  summary: string;
+  description: string;
+  draft: string;
+  tags: string[];
+  seoImage: string;
+}
 
 //prepares a single MDX file to serve to the client
 export const prepareMDX = async (

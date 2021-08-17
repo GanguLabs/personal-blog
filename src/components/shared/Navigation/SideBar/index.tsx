@@ -7,7 +7,7 @@ import {
   SidebarMenu,
   NavItem,
 } from "./SidebarElements";
-import { NAV_ITEMS } from "components/shared/Navbar/NAV_ITEMS";
+import { NAV_ITEMS } from "components/shared/Navigation/Navbar/NAV_ITEMS";
 import Link from "next/link";
 
 const SideBar = ({
