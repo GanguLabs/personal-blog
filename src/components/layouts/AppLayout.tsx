@@ -51,8 +51,12 @@ function Container({ children }: ContainerProps) {
         >
           {children}
         </MotionFlex>
-        <Footer>
-          <Text>Made with ❤️ by Christoph Lindstädt.</Text>
+        <Footer width="100%" flexDirection="row" gridGap={1} fontFamily="Inter">
+          <Text>Made with</Text>
+          <Text color="red.600" fontSize="1.1rem">
+            ❤️
+          </Text>
+          <Text>by Christoph Lindstädt.</Text>
         </Footer>
       </Flex>
     </ChakraContainer>

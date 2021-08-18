@@ -6,15 +6,15 @@
 - [ ] add code row highlight
 - [x] deal with image bundling
 - [ ] build nice navbar
-- [ ] build post overview
+- [x] build post overview
 - [ ] build lab overview
 - [ ] build 3D landing animation
 - [x] animate page transitions
 - [ ] manage lighttheme colors
 - [ ] add tags and author to posts
 - [ ] add image source
-- [ ] add footer
+- [ ] extend footer
 - [ ] add sourcemap
-- [ ] add click counter
+- [ ] add read counter to posts
 - [ ] add spotify top songs and currently listening
-- [ ] cleanup MDX Components
+- [ ] cleanup MDX Components folderstructure
