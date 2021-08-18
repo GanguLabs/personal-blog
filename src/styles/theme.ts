@@ -1,12 +1,12 @@
 import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
-const FONTS_STRING = `Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`;
+export const FONTS_STRING = `Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji`;
 
-const fonts = {
-  body: FONTS_STRING,
-  heading: FONTS_STRING,
-};
+// const fonts = {
+//   body: FONTS_STRING,
+//   heading: FONTS_STRING,
+// };
 
 const colors = {
   gradient: {
@@ -24,29 +24,48 @@ const styles = {
   global: (props) => {
     return {
       body: {
-        fontFamily: "body",
+        fontFamily: FONTS_STRING,
         color: mode("gray.900", "whiteAlpha.900")(props),
-        backgroundColor: mode("white", "gray.900")(props),
-        lineHeight: "base",
+        backgroundColor: mode("gray.50", "gray.900")(props),
+        lineHeight: "1.8",
       },
       canvas: {
         width: "100%",
         height: "100%",
+      },
+      pre: {
+        fontFamily: "monospace",
+        fontSize: "15px",
+        lineHeight: "1.4",
       },
     };
   },
 };
 
 const overrides = {
-  fonts,
   fontWeights: {
     normal: 300,
     medium: 600,
     bold: 700,
   },
-  colors,
+  colors: {
+    gradient: {
+      100: "#48f456",
+      200: "#47ffb3",
+    },
+  },
 };
 
-const theme = extendTheme({ overrides, styles, config });
+const theme = extendTheme({
+  colors: {
+    gradient: {
+      100: "#48f456",
+      200: "#47ffb3",
+    },
+  },
+  overrides,
+  styles,
+  config,
+});
 
 export default theme;

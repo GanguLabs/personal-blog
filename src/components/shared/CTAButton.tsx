@@ -1,7 +1,7 @@
 import React from "react";
 import { keyframes } from "@emotion/react";
 import { Button, useColorMode } from "@chakra-ui/react";
-import theme from "src/styles/theme";
+import theme from "styles/theme";
 
 import { useRouter } from "next/router";
 
@@ -43,7 +43,8 @@ const CTAButton: React.FC<ButtonProps> = ({ children, href }) => {
       transform="scale(1)"
       animation={`${pulse} 5s 3s infinite;`}
       width={["10rem", "12rem"]}
-      fontSize={[14, 17]}
+      fontSize={[12, 15]}
+      letterSpacing="wider"
       _hover={{
         backgroundColor: `${theme.overrides.colors.gradient["200"]}`,
         color: "black",

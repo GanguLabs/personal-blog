@@ -1,4 +1,7 @@
-module.exports = {
+const withImages = require("next-images");
+
+module.exports = withImages({
+  webpack5: true,
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(mp3)$/,
@@ -16,4 +19,4 @@ module.exports = {
     return config;
   },
   reactStrictMode: true,
-};
+});
