@@ -96,12 +96,17 @@ export function parseDate(input, format?) {
   return new Date(parts[fmt["yyyy"]], parts[fmt["mm"]] - 1, parts[fmt["dd"]]);
 }
 
-export function getLocaleString(input, format, locale) {
-  const parsedDate = parseDate(input, format);
-
-  return parsedDate.toLocaleString(locale, {
+export function getLocaleString(
+  input,
+  format,
+  locale,
+  options: Intl.DateTimeFormatOptions = {
     day: "numeric",
     year: "numeric",
     month: "short",
-  });
+  }
+) {
+  const parsedDate = parseDate(input, format);
+
+  return parsedDate.toLocaleString(locale, options);
 }

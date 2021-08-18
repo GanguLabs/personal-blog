@@ -5,8 +5,8 @@ import { parseDate } from "utils";
 
 export default function BlogList({ posts }) {
   return (
-    <Box maxWidth="75ch" width="100%" className="wrapper">
-      <Heading as="h1" mb={4}>
+    <Box maxWidth="75ch" width="100%" className="wrapper" marginTop={8}>
+      <Heading as="h1" mb={5} fontFamily="inherit">
         All Posts
       </Heading>
       <Stack

@@ -135,11 +135,11 @@ export const prepareMDX = async (
       options.loader = {
         ...options.loader,
         ".png": "file",
-        ".jpg": "dataurl",
+        ".jpg": "file",
         ".gif": "file",
         ".mp3": "file",
       };
-      options.publicPath = directory;
+      options.publicPath = "/img/";
       options.write = true;
 
       return options;

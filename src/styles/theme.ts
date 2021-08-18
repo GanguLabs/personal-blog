@@ -48,9 +48,24 @@ const overrides = {
     medium: 600,
     bold: 700,
   },
-  colors,
+  colors: {
+    gradient: {
+      100: "#48f456",
+      200: "#47ffb3",
+    },
+  },
 };
 
-const theme = extendTheme({ overrides, styles, config });
+const theme = extendTheme({
+  colors: {
+    gradient: {
+      100: "#48f456",
+      200: "#47ffb3",
+    },
+  },
+  overrides,
+  styles,
+  config,
+});
 
 export default theme;
