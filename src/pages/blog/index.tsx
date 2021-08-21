@@ -1,6 +1,6 @@
 import { getAllPosts } from "../../mdxTools/mdxServer";
 import { Stack, Heading, Box, StackDivider } from "@chakra-ui/layout";
-import PostItem from "components/shared/PostList/PostItem";
+import PostItem from "components/shared/PostItem";
 import { parseDate } from "utils";
 
 export default function BlogList({ posts }) {
