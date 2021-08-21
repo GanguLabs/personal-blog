@@ -34,7 +34,7 @@ const Post: React.FC<IPost> = ({ code, frontmatter }) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const post = await prepareMDX(params.slug, {});
+  const post = await prepareMDX(params.slug);
   return {
     props: { ...post },
   };
