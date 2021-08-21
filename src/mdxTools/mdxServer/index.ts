@@ -115,12 +115,10 @@ export const prepareMDX = async (
 
   const source = getSourceOfFile(directory + "/index.mdx");
 
-  const { imagesUrl } = options;
-
-  const files = await getComponents(directoryName);
+  // const files = await getComponents(directoryName);
 
   const { code, frontmatter } = await bundleMDX(source, {
-    files,
+    // files,
     cwd: directory,
     xdmOptions: (options) => {
       options.remarkPlugins = [
