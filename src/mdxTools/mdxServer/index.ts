@@ -76,24 +76,19 @@ export const getComponents = async (directoryName: string) => {
   return components;
 };
 
-interface IFrontmatter {
-  title: string;
-  publishedAt: string;
-  lastEditedAt: string;
-  summary: string;
-  description: string;
-  draft: string;
-  tags: string[];
-  seoImage: string;
-}
+// interface IFrontmatter {
+//   title: string;
+//   publishedAt: string;
+//   lastEditedAt: string;
+//   summary: string;
+//   description: string;
+//   draft: string;
+//   tags: string[];
+//   seoImage: string;
+// }
 
 //prepares a single MDX file to serve to the client
-export const prepareMDX = async (
-  directoryName: string,
-  options: {
-    imagesUrl?: string;
-  }
-) => {
+export const prepareMDX = async (directoryName: string) => {
   if (process.platform === "win32") {
     process.env.ESBUILD_BINARY_PATH = path.join(
       process.cwd(),
