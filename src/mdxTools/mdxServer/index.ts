@@ -58,13 +58,10 @@ export const getAllPosts = () => {
 interface Components {
   [file: string]: string;
 }
-
-//gets all components from the given directory to pass it to prepareMDX function
 export const getComponents = async (directoryName: string) => {
   const components: Components = {};
 
   const directory = path.join(POSTS_PATH, "/", directoryName);
-
   const files = getFilePaths(directory, ".tsx");
 
   await asyncForEach(files, async (file) => {
@@ -110,10 +107,7 @@ export const prepareMDX = async (directoryName: string) => {
 
   const source = getSourceOfFile(directory + "/index.mdx");
 
-  // const files = await getComponents(directoryName);
-
   const { code, frontmatter } = await bundleMDX(source, {
-    // files,
     cwd: directory,
     xdmOptions: (options) => {
       options.remarkPlugins = [
@@ -136,6 +130,10 @@ export const prepareMDX = async (directoryName: string) => {
       options.write = true;
 
       return options;
+    },
+    globals: {
+      "@react-three/fiber": "reactThreeFiber",
+      "@react-three/drei": "reactThreeDrei",
     },
   });
 
