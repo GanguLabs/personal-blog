@@ -55,6 +55,11 @@ export const prepareMDX = async (directoryName: string) => {
 
       return options;
     },
+    globals: {
+      "@react-three/fiber": "reactThreeFiber",
+      "@react-three/drei": "reactThreeDrei",
+      react: "reactGlobal",
+    },
   });
 
   return { frontmatter, code };
