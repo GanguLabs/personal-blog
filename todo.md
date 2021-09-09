@@ -17,4 +17,4 @@
 - [ ] add sourcemap
 - [ ] add read counter to posts
 - [ ] add spotify top songs and currently listening
-- [ ] cleanup MDX Components folderstructure
+- [x] cleanup MDX Components folderstructure

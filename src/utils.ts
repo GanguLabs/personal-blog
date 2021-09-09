@@ -83,6 +83,8 @@ export const asyncForEach = async <T>(
   await Promise.all(promises);
 };
 
+// ---------------------------------------------- //
+
 export function parseDate(input, format?) {
   format = format || "dd.mm.yyyy"; // default format
   const parts = input.match(/(\d+)/g);
