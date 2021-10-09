@@ -1,7 +1,7 @@
 # Todo
 
 - [x] fix post layout
-- [ ] fix global three js
+- [x] fix global three js
 - [ ] add ToC to posts
 - [ ] add code row highlight
 - [x] deal with image bundling
