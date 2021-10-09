@@ -56,9 +56,16 @@ export const prepareMDX = async (directoryName: string) => {
       return options;
     },
     globals: {
-      "@react-three/fiber": "reactThreeFiber",
-      "@react-three/drei": "reactThreeDrei",
-      react: "reactGlobal",
+      "@react-three/fiber": {
+        varName: "reactThreeFiber",
+        namedExports: ["Canvas", "useFrame"],
+        defaultExport: false,
+      },
+      "@react-three/drei": {
+        varName: "reactThreeDrei",
+        namedExports: ["Box", "OrbitControls"],
+      },
+      react: { varName: "reactGlobal", namedExports: ["useRef", "useState"] },
     },
   });
 
