@@ -8,13 +8,6 @@ export const FONTS_STRING = `Inter,ui-sans-serif,system-ui,-apple-system,BlinkMa
 //   heading: FONTS_STRING,
 // };
 
-const colors = {
-  gradient: {
-    100: "#48f456",
-    200: "#47ffb3",
-  },
-};
-
 const config: ThemeConfig = {
   initialColorMode: "dark",
   useSystemColorMode: true,

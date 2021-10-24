@@ -28,6 +28,7 @@ function Container({ children }: ContainerProps) {
       <Flex as="div" flexDir="column" minHeight="100%">
         <Navbar />
         <MotionFlex
+          height="0"
           as="main"
           flexGrow={1}
           flexDir="column"
